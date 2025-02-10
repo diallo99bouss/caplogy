@@ -290,38 +290,38 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Striped Table</h4>
-                    <p class="card-description"> Listes des utilisateurs
+                    <p class="card-description"> Listes des Journaux
                     </p>
+                    <p><a href="/journals/signJournal" class=" btn btn-sm btn-success">Add a new Journal</a></p>
+
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                             <tr >
-                                <th> User </th>
-                                <th> Nom </th>
-                                <th> Progress </th>
-                                <th> Prenom </th>
-                                <th> Email </th>
-                                <th> Telephone </th>
+                                <th> Images </th>
+                                <th> Tire </th>
+                                <th> Progess </th>
+                                <th> Auteur </th>
+                                <th> Date de pubication  </th>
+                                <th> Disponibilité </th>
+                                <th> Date de Parution  </th>
                                 <th> Actions </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="utilisateur : ${utilisateurs}">
+                            <tr th:each="journal : ${journals}">
                                 <td class="py-1">
                                     <img src="../images/faces-clipart/pic-1.png" alt="image" />
                                 </td>
-                                <td th:text="${utilisateur.nom}">  </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td th:text="${utilisateur.prenom}">  </td>
-                                <td th:text="${utilisateur.email}">  </td>
-                                <td th:text="${utilisateur.tel}">  </td>
-                                <td><a class="btn btn-primary">
-                                    <i class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a  class="btn btn-danger">
+                                <td th:text="${journal.titre}">  </td>
+
+                                <td th:text="${journal.auteur}">  </td>
+                                <td th:text="${journal.datePublication}">  </td>
+                                <td th:text="${journal.disponibilite}">  </td>
+                                <td th:text="${journal.dateParution}">  </td>
+                                <td><a  th:href="@{/journals/editjournal/{id}(id=${journal.id})}"  class=" btn btn-sm btn-primary">
+                                    <i class="fas fa-user-times ml-2"></i></a></td>
+                                <td><a th:href="@{/deletejournal/{id}(id=${journal.id})}" class=" btn btn-danger">
                                     <i class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
 
@@ -367,32 +367,3 @@
 <!-- End custom js for this page -->
 </body>
 </html>
-
-
-
-
-
-<div th:switch="${utilisateurs}">
-    <h2 th:case="null">No users yet!</h2>
-    <div th:case="*">
-        <h2>Users</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Tel</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
-    <p><a href="/index">Add a new user</a></p>
-    <p><a href="/accueil">accueilr</a></p>
-    <p><a href="/documents">Add a new Document</a></p>
-</div>

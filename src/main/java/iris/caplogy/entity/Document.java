@@ -12,10 +12,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public  class Document {
+public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idDocument;
+    private Long id;
     @NotBlank(message = "titre is mandatory")
     private String titre;
     @NotBlank(message = "auteur is mandatory")
@@ -25,8 +25,8 @@ public  class Document {
     @NotBlank(message = "disponibilite is mandatory")
     private Boolean disponibilite;
 
-    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
-    private Set<Emprunt> emprunts;
+   // @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+   // private Set<Emprunt> emprunts;
 
 
 
